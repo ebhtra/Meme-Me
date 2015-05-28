@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		E42C24961B0B99E60073EC87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C24951B0B99E60073EC87 /* AppDelegate.swift */; };
-		E42C24981B0B99E60073EC87 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C24971B0B99E60073EC87 /* FirstViewController.swift */; };
-		E42C249A1B0B99E60073EC87 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C24991B0B99E60073EC87 /* SecondViewController.swift */; };
+		E42C24981B0B99E60073EC87 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C24971B0B99E60073EC87 /* TableViewController.swift */; };
+		E42C249A1B0B99E60073EC87 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C24991B0B99E60073EC87 /* CollectionViewController.swift */; };
 		E42C249D1B0B99E70073EC87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E42C249B1B0B99E70073EC87 /* Main.storyboard */; };
 		E42C249F1B0B99E70073EC87 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E42C249E1B0B99E70073EC87 /* Images.xcassets */; };
 		E42C24A21B0B99E70073EC87 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E42C24A01B0B99E70073EC87 /* LaunchScreen.xib */; };
 		E42C24AE1B0B99E70073EC87 /* Meme_MeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C24AD1B0B99E70073EC87 /* Meme_MeTests.swift */; };
+		E42C24B81B0BFF870073EC87 /* MemeCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C24B71B0BFF870073EC87 /* MemeCellCollectionViewCell.swift */; };
+		E42C24BA1B0C7EA80073EC87 /* MemeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42C24B91B0C7EA80073EC87 /* MemeStruct.swift */; };
+		E45FEE3B1B0CE0CB0082F304 /* MemeEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FEE3A1B0CE0CB0082F304 /* MemeEditorViewController.swift */; };
+		E45FEE3D1B0CEB880082F304 /* MemeTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FEE3C1B0CEB880082F304 /* MemeTextDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +34,18 @@
 		E42C24901B0B99E60073EC87 /* Meme Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meme Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42C24941B0B99E60073EC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E42C24951B0B99E60073EC87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E42C24971B0B99E60073EC87 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		E42C24991B0B99E60073EC87 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E42C24971B0B99E60073EC87 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		E42C24991B0B99E60073EC87 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		E42C249C1B0B99E70073EC87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E42C249E1B0B99E70073EC87 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E42C24A11B0B99E70073EC87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		E42C24A71B0B99E70073EC87 /* Meme MeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Meme MeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E42C24AC1B0B99E70073EC87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E42C24AD1B0B99E70073EC87 /* Meme_MeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme_MeTests.swift; sourceTree = "<group>"; };
+		E42C24B71B0BFF870073EC87 /* MemeCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		E42C24B91B0C7EA80073EC87 /* MemeStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeStruct.swift; sourceTree = "<group>"; };
+		E45FEE3A1B0CE0CB0082F304 /* MemeEditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
+		E45FEE3C1B0CEB880082F304 /* MemeTextDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTextDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +88,11 @@
 			isa = PBXGroup;
 			children = (
 				E42C24951B0B99E60073EC87 /* AppDelegate.swift */,
-				E42C24971B0B99E60073EC87 /* FirstViewController.swift */,
-				E42C24991B0B99E60073EC87 /* SecondViewController.swift */,
+				E42C24971B0B99E60073EC87 /* TableViewController.swift */,
+				E42C24991B0B99E60073EC87 /* CollectionViewController.swift */,
 				E42C249B1B0B99E70073EC87 /* Main.storyboard */,
+				E45FEE3A1B0CE0CB0082F304 /* MemeEditorViewController.swift */,
+				E42C24B71B0BFF870073EC87 /* MemeCellCollectionViewCell.swift */,
 				E42C249E1B0B99E70073EC87 /* Images.xcassets */,
 				E42C24A01B0B99E70073EC87 /* LaunchScreen.xib */,
 				E42C24931B0B99E60073EC87 /* Supporting Files */,
@@ -93,6 +103,8 @@
 		E42C24931B0B99E60073EC87 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E45FEE3C1B0CEB880082F304 /* MemeTextDelegate.swift */,
+				E42C24B91B0C7EA80073EC87 /* MemeStruct.swift */,
 				E42C24941B0B99E60073EC87 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -215,9 +227,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E42C249A1B0B99E60073EC87 /* SecondViewController.swift in Sources */,
+				E42C24B81B0BFF870073EC87 /* MemeCellCollectionViewCell.swift in Sources */,
+				E42C249A1B0B99E60073EC87 /* CollectionViewController.swift in Sources */,
 				E42C24961B0B99E60073EC87 /* AppDelegate.swift in Sources */,
-				E42C24981B0B99E60073EC87 /* FirstViewController.swift in Sources */,
+				E42C24BA1B0C7EA80073EC87 /* MemeStruct.swift in Sources */,
+				E42C24981B0B99E60073EC87 /* TableViewController.swift in Sources */,
+				E45FEE3D1B0CEB880082F304 /* MemeTextDelegate.swift in Sources */,
+				E45FEE3B1B0CE0CB0082F304 /* MemeEditorViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,6 +361,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Meme Me/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,6 +372,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Meme Me/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -413,6 +431,7 @@
 				E42C24B31B0B99E70073EC87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E42C24B41B0B99E70073EC87 /* Build configuration list for PBXNativeTarget "Meme MeTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +440,7 @@
 				E42C24B61B0B99E70073EC87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
