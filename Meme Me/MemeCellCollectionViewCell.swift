@@ -11,4 +11,7 @@ import UIKit
 class MemeCellCollectionViewCell: UICollectionViewCell {
     // custom cell for collection view
     
+    // store the shared data here.
+    // this was set by the dataSource delegate.
+    @IBOutlet var gridPic: UIImageView!
 }

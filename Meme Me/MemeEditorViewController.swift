@@ -12,6 +12,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBOutlet weak var shareButton: UIBarButtonItem!  // the action button in top left
     @IBOutlet weak var pickedImage: UIImageView!  // the photo used for the meme
+    
     @IBOutlet weak var bottomText: UITextField!  // the meme text boxes
     @IBOutlet weak var topText: UITextField!
     
@@ -173,6 +174,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func saveMeme(meme: MemeStruct) {
         // add a meme to the shared data model
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        // make sure the collection view adds the meme to itself
+    
     }
 
 

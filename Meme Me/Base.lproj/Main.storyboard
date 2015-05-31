@@ -2,13 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Meme Detail View Controller-->
         <scene sceneID="hsq-m7-j73">
             <objects>
-                <viewController id="P61-Ut-bia" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetailViewController" id="P61-Ut-bia" customClass="MemeDetailViewController" customModule="Meme_Me" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5VR-LN-PEH"/>
                         <viewControllerLayoutGuide type="bottom" id="a9K-fk-LlC"/>
@@ -16,12 +17,34 @@
                     <view key="view" contentMode="scaleToFill" id="UZu-4T-JPL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n9K-pB-4Ax">
+                                <rect key="frame" x="16" y="40" width="568" height="560"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="n9K-pB-4Ax" secondAttribute="height" multiplier="1:1" id="mME-kU-NQf"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="mME-kU-NQf"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="n9K-pB-4Ax" secondAttribute="trailing" id="7uq-Ak-xQ8"/>
+                            <constraint firstItem="a9K-fk-LlC" firstAttribute="top" secondItem="n9K-pB-4Ax" secondAttribute="bottom" id="G7v-el-WjR"/>
+                            <constraint firstItem="n9K-pB-4Ax" firstAttribute="top" secondItem="UZu-4T-JPL" secondAttribute="topMargin" constant="40" id="IpS-ER-OGZ"/>
+                            <constraint firstItem="n9K-pB-4Ax" firstAttribute="leading" secondItem="UZu-4T-JPL" secondAttribute="leadingMargin" id="wOH-Du-tHF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memeDetailImage" destination="n9K-pB-4Ax" id="oCW-Xd-ros"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5w-a2-rwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2356" y="201"/>
+            <point key="canvasLocation" x="2512" y="224"/>
         </scene>
         <!--TableViewController-->
         <scene sceneID="hNz-n2-bh7">
@@ -32,32 +55,32 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableCell" textLabel="F6H-aP-ZH6" detailTextLabel="Wc3-dj-I7X" imageView="N6Y-Rr-bQ5" style="IBUITableViewCellStyleValue1" id="vSr-1t-6Ll">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableCell" textLabel="F6H-aP-ZH6" detailTextLabel="i1a-o5-2Nj" imageView="uWV-yZ-Slo" style="IBUITableViewCellStyleValue1" id="vSr-1t-6Ll">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vSr-1t-6Ll" id="XPC-jk-SQ2">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F6H-aP-ZH6">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F6H-aP-ZH6">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wc3-dj-I7X">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" id="uWV-yZ-Slo">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="i1a-o5-2Nj">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="first" id="N6Y-Rr-bQ5">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="9pv-A4-QxB" id="xW8-Bp-4u0"/>
+                            <outlet property="dataSource" destination="9pv-A4-QxB" id="ACO-no-oyX"/>
                             <outlet property="delegate" destination="9pv-A4-QxB" id="aGm-at-QOX"/>
                         </connections>
                     </tableView>
@@ -168,20 +191,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KNz-jM-cyg">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCell" id="DIg-jK-rhE" customClass="MemeCellCollectionViewCell" customModule="Meme_Me" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="MemeCell" id="DIg-jK-rhE" customClass="MemeCellCollectionViewCell" customModule="Meme_Me">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gKM-is-qRY">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <size key="customSize" width="100" height="100"/>
+                                <connections>
+                                    <outlet property="gridPic" destination="gKM-is-qRY" id="FGs-Y4-dvD"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -201,10 +233,13 @@
                         </connections>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="gridView" destination="xEC-8f-McL" id="DPg-ie-sEW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1443" y="347"/>
+            <point key="canvasLocation" x="1706" y="334"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -290,6 +325,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PDG-B6-QpZ"/>
+        <segue reference="Ylb-ah-xtI"/>
     </inferredMetricsTieBreakers>
 </document>
