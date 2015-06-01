@@ -46,6 +46,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
         
         // set the detail image for the View
         detailController.detailImage = self.memes[indexPath.row].memed
+        // pass the index of the meme
+        detailController.index = indexPath.row
         
         self.navigationController!.pushViewController(detailController, animated: true)
     }

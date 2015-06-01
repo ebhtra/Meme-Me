@@ -12,12 +12,16 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var memes: [MemeStruct]! // shared data stored in AppDelegate
     
+    @IBOutlet weak var table: UITableView!  // need this to force data reload
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
     
         // grab and store the meme list from the AppDelegate
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.memes = applicationDelegate.memes
+        // update the data appearing in the TableView
+        table.reloadData()
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,7 +35,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let memeStruct = self.memes[indexPath.row]
         cell.imageView?.image = memeStruct.memed
         if let detailTextLabel = cell.detailTextLabel {
-            detailTextLabel.text = memeStruct.topText + "/ " + memeStruct.bottomText
+            detailTextLabel.text = memeStruct.topText + " / " + memeStruct.bottomText
         }
         return cell
         
@@ -42,6 +46,8 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // set the detail image for the View
         detailController.detailImage = self.memes[indexPath.row].memed
+        // pass the index of the meme
+        detailController.index = indexPath.row
         
         self.navigationController!.pushViewController(detailController, animated: true)
     }

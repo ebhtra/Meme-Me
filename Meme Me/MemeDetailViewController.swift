@@ -15,6 +15,8 @@ class MemeDetailViewController: UIViewController {
     
     // store the meme Image sent by user selection
     var detailImage : UIImage!
+    // store the index of the meme for possible deletion
+    var index: Int!
 
 
     override func viewWillAppear(animated: Bool) {
@@ -29,5 +31,13 @@ class MemeDetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         // bring back tab bar on exit
         self.tabBarController?.tabBar.hidden = false
+    }
+    
+    
+    @IBAction func deleteFromModel(sender: UIButton) {
+        // remove the meme from the AppDelegate and dismiss the VC
+        let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        applicationDelegate.memes.removeAtIndex(index)
+        self.navigationController!.popViewControllerAnimated(true)
     }
 }

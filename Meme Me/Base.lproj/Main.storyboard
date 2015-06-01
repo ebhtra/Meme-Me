@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="n9K-pB-4Ax">
-                                <rect key="frame" x="16" y="40" width="568" height="560"/>
+                                <rect key="frame" x="16" y="50" width="568" height="510"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="n9K-pB-4Ax" secondAttribute="height" multiplier="1:1" id="mME-kU-NQf"/>
                                 </constraints>
@@ -29,12 +29,25 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-eL-lHb">
+                                <rect key="frame" x="255" y="560" width="91" height="40"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Delete Meme">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteFromModel:" destination="P61-Ut-bia" eventType="touchUpInside" id="iDb-Gv-DnP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="O0n-eL-lHb" firstAttribute="top" secondItem="n9K-pB-4Ax" secondAttribute="bottom" id="2y9-1S-mcD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n9K-pB-4Ax" secondAttribute="trailing" id="7uq-Ak-xQ8"/>
-                            <constraint firstItem="a9K-fk-LlC" firstAttribute="top" secondItem="n9K-pB-4Ax" secondAttribute="bottom" id="G7v-el-WjR"/>
-                            <constraint firstItem="n9K-pB-4Ax" firstAttribute="top" secondItem="UZu-4T-JPL" secondAttribute="topMargin" constant="40" id="IpS-ER-OGZ"/>
+                            <constraint firstItem="a9K-fk-LlC" firstAttribute="top" secondItem="n9K-pB-4Ax" secondAttribute="bottom" constant="40" id="G7v-el-WjR"/>
+                            <constraint firstItem="n9K-pB-4Ax" firstAttribute="top" secondItem="UZu-4T-JPL" secondAttribute="topMargin" constant="50" id="IpS-ER-OGZ"/>
+                            <constraint firstAttribute="centerX" secondItem="O0n-eL-lHb" secondAttribute="centerX" id="Y1A-Kn-tqg"/>
+                            <constraint firstItem="a9K-fk-LlC" firstAttribute="top" secondItem="O0n-eL-lHb" secondAttribute="bottom" id="eg0-tm-EoO"/>
                             <constraint firstItem="n9K-pB-4Ax" firstAttribute="leading" secondItem="UZu-4T-JPL" secondAttribute="leadingMargin" id="wOH-Du-tHF"/>
                         </constraints>
                     </view>
@@ -93,6 +106,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="table" destination="T6P-gR-Pau" id="II8-ea-IiR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
