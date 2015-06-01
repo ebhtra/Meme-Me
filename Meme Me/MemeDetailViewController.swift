@@ -15,6 +15,7 @@ class MemeDetailViewController: UIViewController {
     
     // store the meme Image sent by user selection
     var detailImage : UIImage!
+    
     // store the index of the meme for possible deletion
     var index: Int!
 
@@ -23,6 +24,7 @@ class MemeDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         // set the detail image
         memeDetailImage.image = detailImage
+        
         // no tab bar for this screen
         self.tabBarController?.tabBar.hidden = true
     }

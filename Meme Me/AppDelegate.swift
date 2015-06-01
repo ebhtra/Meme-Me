@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    // shared data model
+    // shared data as Model
     var memes = [MemeStruct]()
     
 

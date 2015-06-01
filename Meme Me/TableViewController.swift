@@ -20,6 +20,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // grab and store the meme list from the AppDelegate
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.memes = applicationDelegate.memes
+        
         // update the data appearing in the TableView
         table.reloadData()
     }
@@ -35,7 +36,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         let memeStruct = self.memes[indexPath.row]
         cell.imageView?.image = memeStruct.memed
         if let detailTextLabel = cell.detailTextLabel {
-            detailTextLabel.text = memeStruct.topText + " / " + memeStruct.bottomText
+            detailTextLabel.text = memeStruct.topText + " 😂 " + memeStruct.bottomText
         }
         return cell
         

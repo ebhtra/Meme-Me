@@ -20,6 +20,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
         // grab and store the meme list from the AppDelegate
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.memes = applicationDelegate.memes
+        
         // force reload of data in case a meme was added to or deleted from the model
         gridView.reloadData()
         
@@ -46,6 +47,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
         
         // set the detail image for the View
         detailController.detailImage = self.memes[indexPath.row].memed
+        
         // pass the index of the meme
         detailController.index = indexPath.row
         

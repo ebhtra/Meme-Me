@@ -34,6 +34,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // declare the delegates for the editor's text fields
         bottomText.delegate = bottomMemeDelegate
         topText.delegate = topMemeDelegate
+        
         // use the NS text properties laid out above
         bottomText.defaultTextAttributes = memeTextAttributes
         bottomText.textAlignment = NSTextAlignment.Center
@@ -47,8 +48,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillAppear(animated)
         // hide the tab bar for this view
         self.tabBarController?.tabBar.hidden = true
+        
         // determine whether the camera button will show
         camPickerButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        
         // enable the share button only if user has selected an image
         shareButton.enabled = false
         if let dummyVar = pickedImage.image {
@@ -62,6 +65,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillDisappear(animated)
         // bring the tab bar back upon exit from this view
         self.tabBarController?.tabBar.hidden = false
+        
         // disconnect the keyboard Notification listener
         unsubscribeFromKeyboardNotifications()
     }
@@ -70,9 +74,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // look up user-selected photo in the info dictionary and set the editor's imageView to it
         let chosen = info[UIImagePickerControllerOriginalImage as NSObject] as! UIImage
         self.pickedImage.image = chosen
+        
         // place the default text in textFields
         topText.text = "TOP"
         bottomText.text = "BOTTOM"
+        
         // dismiss the picker
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -107,12 +113,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // if user presses the action button on the navigation bar
         // create a UIImage snapshot of the imageView with its two textFields
         let meme = generateMemedImage()
+        
         // create a MemeStruct with the snapshot and its 3 components
         let memeStruct = MemeStruct(top: self.topText.text, bottom: self.bottomText.text, orig: self.pickedImage.image!, memed: meme)
+        
         // pass the UIImage snapshot to the activity VC to be able to do something with it
         let nextController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+        
         // disable any share features that don't apply
         nextController.excludedActivityTypes = [UIActivityTypeAssignToContact]
+        
         // use the handler to save the meme in the AppDelegate and dismiss the editor, after the share action completes
         nextController.completionWithItemsHandler = { (activityType: String!, completed: Bool, [AnyObject]!, NSError) in
             // if VC dismisses due to user hitting cancel button, return to editor without further action
@@ -149,22 +159,29 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         // get the userInfo dictionary from the notification
         let userInfo = notification.userInfo
+        
         // get the keyboard CGRect from the userInfo dictionary
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        
         return keyboardSize.CGRectValue().height
     }
     func generateMemedImage() -> UIImage {
         // clear the navigation bars to render the screen image
         self.navigationController?.toolbarHidden = true
         self.navigationController?.navigationBarHidden = true
+        
         // change the context to bitmap-based
         UIGraphicsBeginImageContext(self.view.frame.size)
+        
         // take a snapshot of the view
         self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        
         // convert that snapshot into a UIImage
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        
         // remove the bitmap context
         UIGraphicsEndImageContext()
+        
         // return the nav bars to the view
         self.navigationController?.toolbarHidden = false
         self.navigationController?.navigationBarHidden = false
@@ -174,7 +191,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func saveMeme(meme: MemeStruct) {
         // add a meme to the shared data model
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-        // make sure the collection view adds the meme to itself
     
     }
 
