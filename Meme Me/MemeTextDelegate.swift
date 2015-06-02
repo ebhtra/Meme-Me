@@ -15,7 +15,6 @@ class MemeTextDelegate: NSObject, UITextFieldDelegate {
         if (textField.text == "TOP" || textField.text == "BOTTOM") {
             textField.text = ""
         }
-        
     }
     // dismiss keyboard when user hits RETURN
     func textFieldShouldReturn(textField: UITextField) -> Bool {

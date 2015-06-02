@@ -40,13 +40,13 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // take a cell off the queue and set its elements
-        let cell = tableView.dequeueReusableCellWithIdentifier("TableCell", forIndexPath: indexPath) as! UITableViewCell
+        // take a custom cell off the queue and set its elements
+        let cell = tableView.dequeueReusableCellWithIdentifier("TableCell", forIndexPath: indexPath) as! MemeTableCell
         let memeStruct = self.memes[indexPath.row]
-        cell.imageView?.image = memeStruct.memed
-        if let detailTextLabel = cell.detailTextLabel {
-            detailTextLabel.text = memeStruct.topText + " 😂 " + memeStruct.bottomText
-        }
+        cell.tablePic.image = memeStruct.memed
+        cell.topLabel.text = memeStruct.topText
+        cell.bottomLabel.text = memeStruct.bottomText
+        
         return cell
         
     }
