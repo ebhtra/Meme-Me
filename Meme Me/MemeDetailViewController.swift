@@ -16,7 +16,7 @@ class MemeDetailViewController: UIViewController {
     // store the meme Image sent by user selection
     var detailImage : UIImage!
     
-    // store the index of the meme for possible deletion
+    // store the index of the meme for possible deletion or editing
     var index: Int!
 
 
@@ -41,5 +41,18 @@ class MemeDetailViewController: UIViewController {
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         applicationDelegate.memes.removeAtIndex(index)
         self.navigationController!.popViewControllerAnimated(true)
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "editSent" { // if user hits "edit meme" button
+            let navController = segue.destinationViewController as! UINavigationController
+            
+            // this is a bit of a hack due to my embedding the MemeEditorVC in a navigationController
+            let editController = navController.viewControllers[0] as! MemeEditorViewController
+            
+            // use the self.index property to pass the sent meme to the editor
+            let meme = (UIApplication.sharedApplication().delegate as! AppDelegate).memes[index]
+            editController.sentMeme = meme
+        }
     }
 }

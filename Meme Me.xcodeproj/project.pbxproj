@@ -95,7 +95,6 @@
 				E42C249B1B0B99E70073EC87 /* Main.storyboard */,
 				E45FEE3E1B17957F0082F304 /* MemeDetailViewController.swift */,
 				E45FEE3A1B0CE0CB0082F304 /* MemeEditorViewController.swift */,
-				E42C24B71B0BFF870073EC87 /* MemeCellCollectionViewCell.swift */,
 				E42C249E1B0B99E70073EC87 /* Images.xcassets */,
 				E42C24A01B0B99E70073EC87 /* LaunchScreen.xib */,
 				E42C24931B0B99E60073EC87 /* Supporting Files */,
@@ -107,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				E45FEE3C1B0CEB880082F304 /* MemeTextDelegate.swift */,
+				E42C24B71B0BFF870073EC87 /* MemeCellCollectionViewCell.swift */,
 				E42C24B91B0C7EA80073EC87 /* MemeStruct.swift */,
 				E42C24941B0B99E60073EC87 /* Info.plist */,
 			);
@@ -365,7 +365,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Meme Me/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -376,7 +376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Meme Me/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

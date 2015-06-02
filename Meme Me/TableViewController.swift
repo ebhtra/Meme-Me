@@ -16,7 +16,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-    
+        
         // grab and store the meme list from the AppDelegate
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         self.memes = applicationDelegate.memes
@@ -24,7 +24,16 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // update the data appearing in the TableView
         table.reloadData()
     }
-
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // if there are no sent memes, go directly to the editor
+        if memes.count == 0 {
+            self.performSegueWithIdentifier("tableToEditor", sender: self)
+        }
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // how many memes in the table?
         return memes.count
@@ -47,6 +56,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // set the detail image for the View
         detailController.detailImage = self.memes[indexPath.row].memed
+        
         // pass the index of the meme
         detailController.index = indexPath.row
         

@@ -10,6 +10,8 @@ import UIKit
 
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
+    var sentMeme: MemeStruct? // used when editing a previously sent meme
+    
     @IBOutlet weak var shareButton: UIBarButtonItem!  // the action button in top left
     @IBOutlet weak var pickedImage: UIImageView!  // the photo used for the meme
     
@@ -17,6 +19,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topText: UITextField!
     
     @IBOutlet weak var camPickerButton: UIBarButtonItem!  // toolbar button for using camera to meme
+    @IBOutlet weak var albumPickerButton: UIBarButtonItem!  // toolbar button for meming a photo from the album
+    
     
     let topMemeDelegate = MemeTextDelegate()
     let bottomMemeDelegate = MemeTextDelegate()
@@ -52,9 +56,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // determine whether the camera button will show
         camPickerButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
+        // set meme up if user is editing previously sent one
+        if let sentMeme = self.sentMeme {
+            pickedImage.image = sentMeme.original
+            topText.text = sentMeme.topText
+            bottomText.text = sentMeme.bottomText
+            self.navigationController!.toolbarHidden = true
+        }
+        
         // enable the share button only if user has selected an image
         shareButton.enabled = false
-        if let dummyVar = pickedImage.image {
+        if pickedImage.image != nil {
             shareButton.enabled = true
         }
         // connect the keyboard Notification listener
@@ -111,6 +123,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func share(sender: UIBarButtonItem) {
         // if user presses the action button on the navigation bar
+        
         // create a UIImage snapshot of the imageView with its two textFields
         let meme = generateMemedImage()
         

@@ -30,7 +30,7 @@
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0n-eL-lHb">
-                                <rect key="frame" x="249" y="560" width="102" height="40"/>
+                                <rect key="frame" x="189" y="560" width="102" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Delete Meme">
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -39,15 +39,30 @@
                                     <action selector="deleteFromModel:" destination="P61-Ut-bia" eventType="touchUpInside" id="iDb-Gv-DnP"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bM1-YO-d9j">
+                                <rect key="frame" x="325" y="560" width="83" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Anr-9W-TqU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Edit Meme">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="5Pp-cw-2qe" kind="presentation" identifier="editSent" id="mkx-Hv-VqG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="O0n-eL-lHb" firstAttribute="top" secondItem="n9K-pB-4Ax" secondAttribute="bottom" id="2y9-1S-mcD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n9K-pB-4Ax" secondAttribute="trailing" id="7uq-Ak-xQ8"/>
                             <constraint firstItem="a9K-fk-LlC" firstAttribute="top" secondItem="n9K-pB-4Ax" secondAttribute="bottom" constant="40" id="G7v-el-WjR"/>
+                            <constraint firstItem="bM1-YO-d9j" firstAttribute="top" secondItem="n9K-pB-4Ax" secondAttribute="bottom" id="HT6-Lt-vNh"/>
                             <constraint firstItem="n9K-pB-4Ax" firstAttribute="top" secondItem="UZu-4T-JPL" secondAttribute="topMargin" constant="50" id="IpS-ER-OGZ"/>
-                            <constraint firstAttribute="centerX" secondItem="O0n-eL-lHb" secondAttribute="centerX" id="Y1A-Kn-tqg"/>
+                            <constraint firstItem="bM1-YO-d9j" firstAttribute="leading" secondItem="O0n-eL-lHb" secondAttribute="trailing" constant="34" id="JrJ-E2-Ajg"/>
                             <constraint firstItem="a9K-fk-LlC" firstAttribute="top" secondItem="O0n-eL-lHb" secondAttribute="bottom" id="eg0-tm-EoO"/>
+                            <constraint firstItem="O0n-eL-lHb" firstAttribute="centerX" secondItem="n9K-pB-4Ax" secondAttribute="centerX" constant="-60" id="tZf-o6-wQ3"/>
                             <constraint firstItem="n9K-pB-4Ax" firstAttribute="leading" secondItem="UZu-4T-JPL" secondAttribute="leadingMargin" id="wOH-Du-tHF"/>
                         </constraints>
                     </view>
@@ -70,7 +85,7 @@
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TableCell" textLabel="F6H-aP-ZH6" detailTextLabel="i1a-o5-2Nj" imageView="uWV-yZ-Slo" style="IBUITableViewCellStyleValue1" id="vSr-1t-6Ll">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vSr-1t-6Ll" id="XPC-jk-SQ2">
+                                <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vSr-1t-6Ll" id="XPC-jk-SQ2">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F6H-aP-ZH6">
@@ -84,8 +99,8 @@
                                         </imageView>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" id="i1a-o5-2Nj">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -101,7 +116,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="zJi-WD-U8Q">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NIf-FQ-cZA">
                             <connections>
-                                <segue destination="5Pp-cw-2qe" kind="presentation" id="Ylb-ah-xtI"/>
+                                <segue destination="5Pp-cw-2qe" kind="presentation" identifier="tableToEditor" id="Ylb-ah-xtI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -117,7 +132,7 @@
         <!--Meme Editor View Controller-->
         <scene sceneID="e4D-pq-bIF">
             <objects>
-                <viewController id="jCe-7g-jUx" customClass="MemeEditorViewController" customModule="Meme_Me" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditor" id="jCe-7g-jUx" customClass="MemeEditorViewController" customModule="Meme_Me" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hvf-u3-dpg"/>
                         <viewControllerLayoutGuide type="bottom" id="1es-ee-M7i"/>
@@ -188,6 +203,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="albumPickerButton" destination="lpW-FD-2V3" id="tH1-AE-5DS"/>
                         <outlet property="bottomText" destination="ztL-qJ-W3L" id="4rj-zm-fQu"/>
                         <outlet property="camPickerButton" destination="JeS-Nd-L0w" id="M8G-S6-tLn"/>
                         <outlet property="pickedImage" destination="jKZ-Ef-npX" id="vmg-MU-vuj"/>
@@ -241,7 +257,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="AAg-fR-YcF">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="TJY-eF-Uj7">
                             <connections>
-                                <segue destination="5Pp-cw-2qe" kind="presentation" id="PDG-B6-QpZ"/>
+                                <segue destination="5Pp-cw-2qe" kind="presentation" identifier="collectionToEditor" id="PDG-B6-QpZ"/>
                             </connections>
                         </barButtonItem>
                         <connections>
@@ -341,6 +357,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ylb-ah-xtI"/>
+        <segue reference="PDG-B6-QpZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -25,7 +25,15 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
         gridView.reloadData()
         
     }
-
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // if there are no sent memes, go directly to the editor
+        if memes.count == 0 {
+            self.performSegueWithIdentifier("collectionToEditor", sender: self)
+        }
+    }
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // how many memes are there to display?
         return memes.count
