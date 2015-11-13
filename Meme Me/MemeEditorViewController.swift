@@ -82,9 +82,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         unsubscribeFromKeyboardNotifications()
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // look up user-selected photo in the info dictionary and set the editor's imageView to it
-        let chosen = info[UIImagePickerControllerOriginalImage as NSObject] as! UIImage
+        let chosen = info[UIImagePickerControllerOriginalImage as NSObject as! String] as! UIImage
         self.pickedImage.image = chosen
         
         // place the default text in textFields
@@ -128,7 +128,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let meme = generateMemedImage()
         
         // create a MemeStruct with the snapshot and its 3 components
-        let memeStruct = MemeStruct(top: self.topText.text, bottom: self.bottomText.text, orig: self.pickedImage.image!, memed: meme)
+        let memeStruct = MemeStruct(top: self.topText.text!, bottom: self.bottomText.text!, orig: self.pickedImage.image!, memed: meme)
         
         // pass the UIImage snapshot to the activity VC to be able to do something with it
         let nextController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
@@ -137,7 +137,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         nextController.excludedActivityTypes = [UIActivityTypeAssignToContact]
         
         // use the handler to save the meme in the AppDelegate and dismiss the editor, after the share action completes
-        nextController.completionWithItemsHandler = { (activityType: String!, completed: Bool, [AnyObject]!, NSError) in
+        
+        nextController.completionWithItemsHandler = { (activityType: String?, completed: Bool, _: [AnyObject]?, error: NSError?) in
             // if VC dismisses due to user hitting cancel button, return to editor without further action
             if !completed {
                 return
