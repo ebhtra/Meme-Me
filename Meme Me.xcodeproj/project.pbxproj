@@ -20,6 +20,7 @@
 		E45FEE3D1B0CEB880082F304 /* MemeTextDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FEE3C1B0CEB880082F304 /* MemeTextDelegate.swift */; };
 		E45FEE3F1B17957F0082F304 /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FEE3E1B17957F0082F304 /* MemeDetailViewController.swift */; };
 		E45FEE411B1E20E00082F304 /* MemeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FEE401B1E20E00082F304 /* MemeTableCell.swift */; };
+		E4C6FC4E1BF64EE500683495 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C6FC4D1BF64EE500683495 /* CoreDataStackManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		E45FEE3C1B0CEB880082F304 /* MemeTextDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTextDelegate.swift; sourceTree = "<group>"; };
 		E45FEE3E1B17957F0082F304 /* MemeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
 		E45FEE401B1E20E00082F304 /* MemeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableCell.swift; sourceTree = "<group>"; };
+		E4C6FC4D1BF64EE500683495 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				E42C24971B0B99E60073EC87 /* TableViewController.swift */,
 				E42C24991B0B99E60073EC87 /* CollectionViewController.swift */,
 				E42C249B1B0B99E70073EC87 /* Main.storyboard */,
+				E4C6FC4D1BF64EE500683495 /* CoreDataStackManager.swift */,
 				E45FEE3E1B17957F0082F304 /* MemeDetailViewController.swift */,
 				E45FEE3A1B0CE0CB0082F304 /* MemeEditorViewController.swift */,
 				E42C249E1B0B99E70073EC87 /* Images.xcassets */,
@@ -238,6 +241,7 @@
 				E42C24B81B0BFF870073EC87 /* MemeCellCollectionViewCell.swift in Sources */,
 				E42C249A1B0B99E60073EC87 /* CollectionViewController.swift in Sources */,
 				E42C24961B0B99E60073EC87 /* AppDelegate.swift in Sources */,
+				E4C6FC4E1BF64EE500683495 /* CoreDataStackManager.swift in Sources */,
 				E42C24BA1B0C7EA80073EC87 /* MemeStruct.swift in Sources */,
 				E42C24981B0B99E60073EC87 /* TableViewController.swift in Sources */,
 				E45FEE3D1B0CEB880082F304 /* MemeTextDelegate.swift in Sources */,
@@ -395,10 +399,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -415,10 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "Meme MeTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dirt.$(PRODUCT_NAME:rfc1034identifier)";
