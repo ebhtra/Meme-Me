@@ -5,7 +5,7 @@
 //  Created by Ethan Haley on 5/19/15.
 //  Copyright (c) 2015 Ethan Haley. All rights reserved.
 //
-
+import CoreData
 import UIKit
 
 @UIApplicationMain
@@ -15,11 +15,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // shared data as Model
     var memes = [MemeStruct]()
+    var storedMemes = [MemeClass]()
     
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let fetchRequest = NSFetchRequest(entityName: "MemeClass")
+        do {
+            if let results = try CoreDataStackManager.sharedInstance().managedObjectContext.executeFetchRequest(fetchRequest) as? [MemeClass] {
+                storedMemes = results
+                memes = [MemeStruct]()
+                for meme in storedMemes {
+                    memes.append(MemeStruct(top: meme.topText, bottom: meme.bottomText, orig: meme.original, memed: meme.memed))
+                }
+            }
+        } catch let error as NSError {
+            print("failed to fetch stored memes. \(error)")
+        }
         return true
     }
 

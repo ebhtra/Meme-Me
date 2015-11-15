@@ -5,7 +5,7 @@
 //  Created by Ethan Haley on 5/20/15.
 //  Copyright (c) 2015 Ethan Haley. All rights reserved.
 //
-
+import CoreData
 import UIKit
 
 class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
@@ -144,6 +144,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 return
             }
             self.saveMeme(memeStruct)
+            self.persistMeme(memeStruct)
             self.dismissViewControllerAnimated(false, completion: nil)
         }
         self.presentViewController(nextController, animated: true, completion: nil)
@@ -205,7 +206,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func saveMeme(meme: MemeStruct) {
         // add a meme to the shared data model
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
-    
+    }
+    func persistMeme(meme: MemeStruct) {
+        let _ = MemeClass(memeToStore: meme, context: CoreDataStackManager.sharedInstance().managedObjectContext)
+        CoreDataStackManager.sharedInstance().saveContext()
     }
 
 
