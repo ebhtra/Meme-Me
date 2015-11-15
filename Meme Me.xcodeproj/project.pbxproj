@@ -21,6 +21,8 @@
 		E45FEE3F1B17957F0082F304 /* MemeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FEE3E1B17957F0082F304 /* MemeDetailViewController.swift */; };
 		E45FEE411B1E20E00082F304 /* MemeTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45FEE401B1E20E00082F304 /* MemeTableCell.swift */; };
 		E4C6FC4E1BF64EE500683495 /* CoreDataStackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C6FC4D1BF64EE500683495 /* CoreDataStackManager.swift */; };
+		E4C6FC511BF6B7BB00683495 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4C6FC4F1BF6B7BB00683495 /* Model.xcdatamodeld */; };
+		E4C6FC531BF7835B00683495 /* MemeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C6FC521BF7835B00683495 /* MemeClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		E45FEE3E1B17957F0082F304 /* MemeDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeDetailViewController.swift; sourceTree = "<group>"; };
 		E45FEE401B1E20E00082F304 /* MemeTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTableCell.swift; sourceTree = "<group>"; };
 		E4C6FC4D1BF64EE500683495 /* CoreDataStackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStackManager.swift; sourceTree = "<group>"; };
+		E4C6FC501BF6B7BB00683495 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E4C6FC521BF7835B00683495 /* MemeClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +99,9 @@
 			children = (
 				E42C24951B0B99E60073EC87 /* AppDelegate.swift */,
 				E42C24971B0B99E60073EC87 /* TableViewController.swift */,
-				E42C24991B0B99E60073EC87 /* CollectionViewController.swift */,
 				E42C249B1B0B99E70073EC87 /* Main.storyboard */,
 				E4C6FC4D1BF64EE500683495 /* CoreDataStackManager.swift */,
+				E42C24991B0B99E60073EC87 /* CollectionViewController.swift */,
 				E45FEE3E1B17957F0082F304 /* MemeDetailViewController.swift */,
 				E45FEE3A1B0CE0CB0082F304 /* MemeEditorViewController.swift */,
 				E42C249E1B0B99E70073EC87 /* Images.xcassets */,
@@ -114,6 +118,8 @@
 				E45FEE3C1B0CEB880082F304 /* MemeTextDelegate.swift */,
 				E42C24B71B0BFF870073EC87 /* MemeCellCollectionViewCell.swift */,
 				E42C24B91B0C7EA80073EC87 /* MemeStruct.swift */,
+				E4C6FC521BF7835B00683495 /* MemeClass.swift */,
+				E4C6FC4F1BF6B7BB00683495 /* Model.xcdatamodeld */,
 				E42C24941B0B99E60073EC87 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -238,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4C6FC531BF7835B00683495 /* MemeClass.swift in Sources */,
 				E42C24B81B0BFF870073EC87 /* MemeCellCollectionViewCell.swift in Sources */,
 				E42C249A1B0B99E60073EC87 /* CollectionViewController.swift in Sources */,
 				E42C24961B0B99E60073EC87 /* AppDelegate.swift in Sources */,
@@ -247,6 +254,7 @@
 				E45FEE3D1B0CEB880082F304 /* MemeTextDelegate.swift in Sources */,
 				E45FEE3B1B0CE0CB0082F304 /* MemeEditorViewController.swift in Sources */,
 				E45FEE3F1B17957F0082F304 /* MemeDetailViewController.swift in Sources */,
+				E4C6FC511BF6B7BB00683495 /* Model.xcdatamodeld in Sources */,
 				E45FEE411B1E20E00082F304 /* MemeTableCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +464,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E4C6FC4F1BF6B7BB00683495 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E4C6FC501BF6B7BB00683495 /* Model.xcdatamodel */,
+			);
+			currentVersion = E4C6FC501BF6B7BB00683495 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E42C24881B0B99E60073EC87 /* Project object */;
 }
