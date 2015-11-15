@@ -208,7 +208,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
     }
     func persistMeme(meme: MemeStruct) {
-        let _ = MemeClass(memeToStore: meme, context: CoreDataStackManager.sharedInstance().managedObjectContext)
+        // add the managed object meme to the array just to be able to delete it
+        let newMeme = MemeClass(memeToStore: meme, context: CoreDataStackManager.sharedInstance().managedObjectContext)
+        (UIApplication.sharedApplication().delegate as! AppDelegate).storedMemes.append(newMeme)
+        
         CoreDataStackManager.sharedInstance().saveContext()
     }
 

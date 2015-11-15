@@ -62,7 +62,26 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.navigationController!.pushViewController(detailController, animated: true)
     }
-
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        switch (editingStyle) {
+        case .Delete:
+            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+            let storedMeme = appDel.storedMemes[indexPath.row]
+            
+            // Remove the actor from the array
+            memes.removeAtIndex(indexPath.row)
+            
+            // Remove the row from the table
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            
+            // Remove the actor from the context
+            CoreDataStackManager.sharedInstance().managedObjectContext.deleteObject(storedMeme)
+            CoreDataStackManager.sharedInstance().saveContext()
+        default:
+            break
+        }
+    }
 
 }
 

@@ -37,9 +37,14 @@ class MemeDetailViewController: UIViewController {
     
     
     @IBAction func deleteFromModel(sender: UIButton) {
-        // remove the meme from the AppDelegate and dismiss the VC
+        // remove the meme from the AppDelegate and managed object model and then dismiss the VC
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         applicationDelegate.memes.removeAtIndex(index)
+        let managedMemeObj = applicationDelegate.storedMemes[index]
+        applicationDelegate.storedMemes.removeAtIndex(index)
+        CoreDataStackManager.sharedInstance().managedObjectContext.deleteObject(managedMemeObj)
+        CoreDataStackManager.sharedInstance().saveContext()
+        
         self.navigationController!.popViewControllerAnimated(true)
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
