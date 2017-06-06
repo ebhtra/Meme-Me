@@ -27,10 +27,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     // the following font attributes were suggested by Udacity to approximate the Impact font
     let memeTextAttributes = [
-        NSStrokeColorAttributeName : UIColor.blackColor(),
-        NSForegroundColorAttributeName : UIColor.whiteColor(),
+        NSStrokeColorAttributeName : UIColor.black,
+        NSForegroundColorAttributeName : UIColor.white,
         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName : NSNumber(float: -3.0)
+        NSStrokeWidthAttributeName : NSNumber(value: -3.0 as Float)
     ]
 
     override func viewDidLoad() {
@@ -41,48 +41,48 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         // use the NS text properties laid out above
         bottomText.defaultTextAttributes = memeTextAttributes
-        bottomText.textAlignment = NSTextAlignment.Center
+        bottomText.textAlignment = NSTextAlignment.center
         
         topText.defaultTextAttributes = memeTextAttributes
-        topText.textAlignment = NSTextAlignment.Center
+        topText.textAlignment = NSTextAlignment.center
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // hide the tab bar for this view
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
         // determine whether the camera button will show
-        camPickerButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        camPickerButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         
         // set meme up if user is editing previously sent one
         if let sentMeme = self.sentMeme {
             pickedImage.image = sentMeme.original
             topText.text = sentMeme.topText
             bottomText.text = sentMeme.bottomText
-            self.navigationController!.toolbarHidden = true
+            self.navigationController!.isToolbarHidden = true
         }
         
         // enable the share button only if user has selected an image
-        shareButton.enabled = false
+        shareButton.isEnabled = false
         if pickedImage.image != nil {
-            shareButton.enabled = true
+            shareButton.isEnabled = true
         }
         // connect the keyboard Notification listener
         subscribeToKeyboardNotifications()
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         // bring the tab bar back upon exit from this view
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.isHidden = false
         
         // disconnect the keyboard Notification listener
         unsubscribeFromKeyboardNotifications()
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         // look up user-selected photo in the info dictionary and set the editor's imageView to it
         let chosen = info[UIImagePickerControllerOriginalImage as NSObject as! String] as! UIImage
         self.pickedImage.image = chosen
@@ -92,36 +92,36 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         bottomText.text = "BOTTOM"
         
         // dismiss the picker
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func pickFromAlbum(sender: UIBarButtonItem) {
+    @IBAction func pickFromAlbum(_ sender: UIBarButtonItem) {
         // if user chooses "Album" on the toolbar
         let imageController = UIImagePickerController()
         imageController.delegate = self
-        imageController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        self.presentViewController(imageController, animated: true, completion: nil)
+        imageController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        self.present(imageController, animated: true, completion: nil)
         
     }
     
-    @IBAction func pickFromCamera(sender: UIBarButtonItem) {
+    @IBAction func pickFromCamera(_ sender: UIBarButtonItem) {
         // if user chooses camera on the toolbar
         let imageController = UIImagePickerController()
         imageController.delegate = self
-        imageController.sourceType = UIImagePickerControllerSourceType.Camera
-        self.presentViewController(imageController, animated: true, completion: nil)
+        imageController.sourceType = UIImagePickerControllerSourceType.camera
+        self.present(imageController, animated: true, completion: nil)
     }
     
-    @IBAction func cancel(sender: UIBarButtonItem) {
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
         // if user presses cancel on the navigation bar
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func share(sender: UIBarButtonItem) {
+    @IBAction func share(_ sender: UIBarButtonItem) {
         // if user presses the action button on the navigation bar
         
         // create a UIImage snapshot of the imageView with its two textFields
@@ -134,83 +134,83 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let nextController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
         
         // disable any share features that don't apply
-        nextController.excludedActivityTypes = [UIActivityTypeAssignToContact]
+        nextController.excludedActivityTypes = [UIActivityType.assignToContact]
         
         // use the handler to save the meme in the AppDelegate and dismiss the editor, after the share action completes
         
-        nextController.completionWithItemsHandler = { (activityType: String?, completed: Bool, _: [AnyObject]?, error: NSError?) in
+        nextController.completionWithItemsHandler = { (activityType: UIActivityType?, completed: Bool, _: [Any]?, error: Error?) in
             // if VC dismisses due to user hitting cancel button, return to editor without further action
             if !completed {
                 return
             }
             self.saveMeme(memeStruct)
             self.persistMeme(memeStruct)
-            self.dismissViewControllerAnimated(false, completion: nil)
+            self.dismiss(animated: false, completion: nil)
         }
-        self.presentViewController(nextController, animated: true, completion: nil)
+        self.present(nextController, animated: true, completion: nil)
        
     }
     
     func subscribeToKeyboardNotifications() {
         // register the VC to respond to keyboard visibility change notifications
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     func unsubscribeFromKeyboardNotifications() {
         // de-register the VC to respond to keyboard visibility change notifications
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
-    func keyboardWillShow(notification: NSNotification) {
-        if bottomText.editing {  // only shift the view up if it's the bottom field being edited
+    func keyboardWillShow(_ notification: Notification) {
+        if bottomText.isEditing {  // only shift the view up if it's the bottom field being edited
             self.view.frame.origin.y -= getKeyboardHeight(notification)
         }
     }
-    func keyboardWillHide(notification: NSNotification) {
-        if bottomText.editing {  // only shift the view down if it's the bottom field being edited
+    func keyboardWillHide(_ notification: Notification) {
+        if bottomText.isEditing {  // only shift the view down if it's the bottom field being edited
             self.view.frame.origin.y += getKeyboardHeight(notification)
         }
     }
-    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+    func getKeyboardHeight(_ notification: Notification) -> CGFloat {
         // get the userInfo dictionary from the notification
         let userInfo = notification.userInfo
         
         // get the keyboard CGRect from the userInfo dictionary
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         
-        return keyboardSize.CGRectValue().height
+        return keyboardSize.cgRectValue.height
     }
     func generateMemedImage() -> UIImage {
         // clear the navigation bars to render the screen image
-        self.navigationController?.toolbarHidden = true
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isToolbarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         
         // change the context to bitmap-based
         UIGraphicsBeginImageContext(self.view.frame.size)
         
         // take a snapshot of the view
-        self.view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        self.view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         
         // convert that snapshot into a UIImage
-        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         
         // remove the bitmap context
         UIGraphicsEndImageContext()
         
         // return the nav bars to the view
-        self.navigationController?.toolbarHidden = false
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isToolbarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         
         return memedImage
     }
-    func saveMeme(meme: MemeStruct) {
+    func saveMeme(_ meme: MemeStruct) {
         // add a meme to the shared data model
-        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
     }
-    func persistMeme(meme: MemeStruct) {
+    func persistMeme(_ meme: MemeStruct) {
         // add the managed object meme to the array just to be able to delete it
         let newMeme = MemeClass(memeToStore: meme, context: CoreDataStackManager.sharedInstance().managedObjectContext)
-        (UIApplication.sharedApplication().delegate as! AppDelegate).storedMemes.append(newMeme)
+        (UIApplication.shared.delegate as! AppDelegate).storedMemes.append(newMeme)
         
         CoreDataStackManager.sharedInstance().saveContext()
     }

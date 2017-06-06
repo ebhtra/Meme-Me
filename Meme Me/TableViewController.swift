@@ -14,34 +14,34 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var table: UITableView!  // need this to force data reload
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // grab and store the meme list from the AppDelegate
-        let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let applicationDelegate = UIApplication.shared.delegate as! AppDelegate
         self.memes = applicationDelegate.memes
         
         // update the data appearing in the TableView
         table.reloadData()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // if there are no sent memes, go directly to the editor
         if memes.count == 0 {
-            self.performSegueWithIdentifier("tableToEditor", sender: self)
+            self.performSegue(withIdentifier: "tableToEditor", sender: self)
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // how many memes in the table?
         return memes.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // take a custom cell off the queue and set its elements
-        let cell = tableView.dequeueReusableCellWithIdentifier("TableCell", forIndexPath: indexPath) as! MemeTableCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as! MemeTableCell
         let memeStruct = self.memes[indexPath.row]
         cell.tablePic.image = memeStruct.memed
         cell.topLabel.text = memeStruct.topText
@@ -50,9 +50,9 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
         
     }
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // create a DetailVC by storyboard ID
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         
         // set the detail image for the View
         detailController.detailImage = self.memes[indexPath.row].memed
@@ -62,21 +62,21 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.navigationController!.pushViewController(detailController, animated: true)
     }
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         switch (editingStyle) {
-        case .Delete:
-            let appDel = UIApplication.sharedApplication().delegate as! AppDelegate
+        case .delete:
+            let appDel = UIApplication.shared.delegate as! AppDelegate
             let storedMeme = appDel.storedMemes[indexPath.row]
             
             // Remove the actor from the array
-            memes.removeAtIndex(indexPath.row)
+            memes.remove(at: indexPath.row)
             
             // Remove the row from the table
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.fade)
             
             // Remove the actor from the context
-            CoreDataStackManager.sharedInstance().managedObjectContext.deleteObject(storedMeme)
+            CoreDataStackManager.sharedInstance().managedObjectContext.delete(storedMeme)
             CoreDataStackManager.sharedInstance().saveContext()
         default:
             break

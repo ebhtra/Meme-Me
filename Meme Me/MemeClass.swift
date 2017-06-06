@@ -18,13 +18,13 @@ class MemeClass: NSManagedObject {
     @NSManaged var original: UIImage
     @NSManaged var memed: UIImage
     
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+    override init(entity: NSEntityDescription, insertInto context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertInto: context)
     }
     
     init(memeToStore: MemeStruct, context: NSManagedObjectContext) {
-        let entity = NSEntityDescription.entityForName("MemeClass", inManagedObjectContext: context)!
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
+        let entity = NSEntityDescription.entity(forEntityName: "MemeClass", in: context)!
+        super.init(entity: entity, insertInto: context)
         
         topText = memeToStore.topText
         bottomText = memeToStore.bottomText

@@ -14,34 +14,34 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var gridView: UICollectionView! // need this outlet to force reload of data
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // grab and store the meme list from the AppDelegate
-        let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let applicationDelegate = UIApplication.shared.delegate as! AppDelegate
         self.memes = applicationDelegate.memes
         
         // force reload of data in case a meme was added to or deleted from the model
         gridView.reloadData()
         
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // if there are no sent memes, go directly to the editor
         if memes.count == 0 {
-            self.performSegueWithIdentifier("collectionToEditor", sender: self)
+            self.performSegue(withIdentifier: "collectionToEditor", sender: self)
         }
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // how many memes are there to display?
         return memes.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // take a cell off the queue and set its image
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCell", forIndexPath: indexPath) as! MemeCellCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemeCell", for: indexPath) as! MemeCellCollectionViewCell
         let memeStruct = self.memes[indexPath.row]
         cell.gridPic.image = memeStruct.memed
        
@@ -49,9 +49,9 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource {
     
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         // create a DetailVC by storyboard ID
-        let detailController = self.storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
+        let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         
         // set the detail image for the View
         detailController.detailImage = self.memes[indexPath.row].memed

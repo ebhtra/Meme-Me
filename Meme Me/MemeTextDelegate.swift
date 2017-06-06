@@ -10,14 +10,14 @@ import UIKit
 
 class MemeTextDelegate: NSObject, UITextFieldDelegate {
     // protocol methods for editing meme text
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         // clear any default text
         if (textField.text == "TOP" || textField.text == "BOTTOM") {
             textField.text = ""
         }
     }
     // dismiss keyboard when user hits RETURN
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
